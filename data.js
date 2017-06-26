@@ -17,7 +17,7 @@ var peopleArray = [
   {name: 'Anne', shoutout: 'James, Peter, and Alecia, thank you guys so much for being so patient and explaining each step in the group activity on Tuesday until I understood!' },
   {name: 'Ben Haesemeyer', shoutout: 'Shout out to Nicole for trading desk with me to accommodate my giant stature ' },
   {name: 'Catherine Yanish', shoutout: 'Thanks Antares comrades for code help and fun times this first week!' },
-  {name: 'Alec Sands', shoutout: 'James, Peter, and Alecia, thank yo in the group activity on Tuesday until I understood!' },
+  {name: 'Alec Sands', shoutout: 'Shoutout to David for his great relaxed attitude, which helps me stay relaxed and focused.' },
   {name: 'Antonio Rice', shoutout: 'Huge shoutout to Ted, you helped me out big time with the Block Challenge. Lets not forget about the honorable mentions though! You guys know who you are!!' },
   {name: 'David Krueger', shoutout: 'Shout out to Amanda and Tom for having my back.' }
 ];
