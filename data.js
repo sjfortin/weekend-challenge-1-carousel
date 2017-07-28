@@ -1,11 +1,11 @@
 var peopleArray = [
-  {name: "Alex Jung", shoutout: "Fred" },
   {name: "Ian Lehfeldt", shoutout: "Shout out to Ryan T for being an active team member in group projects and for mediating through groups during stressful situations" },
   {name: "Alecia", shoutout: "Shoutout to my fellow Betelgeus? Betelgeusians? for a fun first week!" },
   {name: "Canin", shoutout: "I'd like to thank Diego VonFluffington for his consistent support and companionship." },
   {name: "Tim Lohmann", shoutout: "Alex" },
   {name: "Nic Bade", shoutout: "Jen Show is an awesome, upbeat neighbor.  Thank you for being positive...almost always!" },
   {name: "Ryan Kiang", shoutout: "Prime staff and cohorts." },
+  {name: "Alex Jung", shoutout: "Fred" },
   {name: "Ryan", shoutout: "Thanks to Luke and Kris for setting an amazing tone for our cohort. The first week was more challenging than I thought it was going to be, and you guys brought some really good energy that made me lose track of time, that was  much appreciated." },
   {name: "Tom Ritland", shoutout: "Shout out to my wife who is working as the sole provider for us while I go through this program!" },
   {name: "Charles Renk", shoutout: "Shout out to Luke for answering my plethora of questions, shout out to JSCS for giving me an amazing opportunity, and shout out to the entire staff at Prime for making me feel welcome and safe here." },
