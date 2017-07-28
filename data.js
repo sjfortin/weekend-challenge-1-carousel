@@ -19,6 +19,7 @@ var peopleArray = [
   {name: "Jen", shoutout: "Brendt is awesome for saying 'yes' every time I said 'can we try this?', even if he knew it wouldn't work." },
   {name: "Adam", shoutout: "Shout out to Sam for showing the CSS live-editing trick!" },
   {name: "Eric Austin", shoutout: "Sabrina" },
-  {name: "Kevin McMahon", shoutout: "Shout out to my friend Susan pushing me to stop being content exactly 1 year ago on 7/24/16" }
-
+  {name: "Kevin McMahon", shoutout: "Shout out to my friend Susan pushing me to stop being content exactly 1 year ago on 7/24/16" },
+  {name: "Luke", shoutout: "Amazing speeches this morning everybody! Huge ups for the self-proclaimed nervous among you. You did great work!" },
+  {name: "Brendt Bly", shoutout: "Shout out to Adam for the term "Grenade in a box!" which I will now be using daily." }
 ];
