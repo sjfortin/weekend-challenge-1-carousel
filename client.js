@@ -25,11 +25,12 @@ $(document).ready(function () {
     $('#current-person').html('0' + currentPersonToBeDisplayed + ' out of 23');
 
     // Add event listeners for Next and Previous Buttons
-    $('.buttons').on('click', '#next', nextPerson);
-    $('.buttons').on('click', '#previous', previousPerson);
+    $('#next').on('click', nextPerson);
+    $('#previous').on('click', previousPerson);
 
-    // Adjust currentPerson when next button is clicked
+    // Set the person to be displayed as the next person when next button is clicked
     function nextPerson() {
+        // If current person is the last person, set the person to be displayed to the first person
         if (currentPersonToBeDisplayed === peopleArray.length) {
             currentPersonToBeDisplayed = 1;
         } else {
@@ -38,8 +39,9 @@ $(document).ready(function () {
         displayCurrentPerson();
     }
 
-    // Adjust currentPerson when previous button is clicked
+    // Set the person to be displayed as the previous person when previous button is clicked
     function previousPerson() {
+        // If the current person is the first person, set the person to be displayed to the last person
         if (currentPersonToBeDisplayed === 1) {
             currentPersonToBeDisplayed = peopleArray.length;
         } else {
@@ -48,7 +50,7 @@ $(document).ready(function () {
         displayCurrentPerson();
     }
 
-    // Function to display the current person when next or previous button is clicked
+    // Displays the current person when next or previous button is clicked
     function displayCurrentPerson() {
         person = peopleArray[currentPersonToBeDisplayed - 1];
         $('#name').hide().html(person.name).fadeIn('slow');
@@ -72,7 +74,7 @@ $(document).ready(function () {
     }
 
     var carouselTimer = function () {
-        setInterval(timerDisplayCurrentPerson, 5000);
+        setTimeout(timerDisplayCurrentPerson, 5000);
     }
 
     carouselTimer();
