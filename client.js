@@ -16,9 +16,10 @@ console.log('peopleArray from data.js: ', peopleArray);
 $(document).ready(function () {
     // Defining global variables
     var currentPerson = 1;
+    var secondsCounter = 0;
 
     // Initial View on DOM load
-    $('#name').html(peopleArray[currentPerson-1].name);
+    $('#name').html(peopleArray[currentPerson - 1].name);
     $('#shoutout').html(peopleArray[currentPerson - 1].shoutout);
     $('#current-person').html('0' + currentPerson + ' out of 23');
 
@@ -28,17 +29,17 @@ $(document).ready(function () {
 
     // Adjust currentPerson when next button is clicked
     function nextPerson() {
-        if(currentPerson === 23) {
+        if (currentPerson === 23) {
             currentPerson = 1;
         } else {
-            currentPerson++;            
+            currentPerson++;
         }
         displayCurrentPerson();
     }
 
     // Adjust currentPerson when previous button is clicked
     function previousPerson() {
-        if(currentPerson === 1) {
+        if (currentPerson === 1) {
             currentPerson = 23;
         } else {
             currentPerson--;
@@ -48,12 +49,29 @@ $(document).ready(function () {
 
     // Function to display the current person when next or previous button is clicked
     function displayCurrentPerson() {
-        $('#name').hide().html(peopleArray[currentPerson - 1].name).fadeIn('fast');
-        $('#shoutout').hide().html(peopleArray[currentPerson - 1].shoutout).fadeIn('fast');
-        if(currentPerson < 10) {
+        $('#name').hide().html(peopleArray[currentPerson - 1].name).fadeIn('slow');
+        $('#shoutout').hide().html(peopleArray[currentPerson - 1].shoutout).fadeIn('slow');
+        if (currentPerson < 10) {
             $('#current-person').html('0' + currentPerson + ' out of 23');
         } else {
             $('#current-person').html(currentPerson + ' out of 23');
         }
     }
+
+    // Working on transition timer. Need to figure out how to reset. Maybe have a countdown display on the DOM
+    function timerDisplayCurrentPerson() {
+        secondsCounter = 0;
+        if (currentPerson === 23) {
+            currentPerson = 1;
+        } else {
+            currentPerson++
+        }
+        displayCurrentPerson();
+    }
+
+    var carouselTimer = function () {
+        setInterval(timerDisplayCurrentPerson, 5000);
+    }
+
+    carouselTimer();
 });
