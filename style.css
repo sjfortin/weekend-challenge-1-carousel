@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #575757;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.carousel {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.person {
+    padding: 20px 0;
+    text-align: center;
+}
+
+#name {
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#shoutout {
+    clear: both;
+}
+
+.buttons {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#previous {
+    display: inline-block;
+}
+
+#current-person {
+    display: inline-block;
+}
+
+#next {
+    display: inline-block;
+}
+
+.button {
+    background: #575757;
+    color: #fff;
+    padding: 3px 10px;
+    cursor: pointer;
+    margin: 0 5px;
+    width: 70px;
+}
