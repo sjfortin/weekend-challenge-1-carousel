@@ -1,7 +1,5 @@
 /*
 To Dos:
-
-- Include a fade out and fade in animation in-between transitioning people.
 - Include a timer that moves to the next person if the user is not clicking on "Next" or "Prev". If the user clicks on "Next" or "Prev", the timer should be reset. The timer should transition between people every 10 seconds.
 
 Complete:
@@ -10,46 +8,48 @@ Complete:
 - clicking "Prev" when on the first person should wrap around to show the last person and vice versa.
 - DOM should display showing the number of people and which is being currently viewed (eg. 2/20).
 - When a person is displayed, show their first name, last name and their shout out. Only one person should be shown at any given time.
+- Include a fade out and fade in animation in-between transitioning people.
 */
 
 console.log('peopleArray from data.js: ', peopleArray);
 
 $(document).ready(function () {
     // Defining global variables
-    var currentPersonDisplayed = 1;
+    var currentPerson = 1;
 
     // Initial View on DOM load
-    $('#name').html(peopleArray[currentPersonDisplayed-1].name);
-    $('#shoutout').html(peopleArray[currentPersonDisplayed - 1].shoutout);
-    $('#current-person').html(currentPersonDisplayed + "/23");
+    $('#name').html(peopleArray[currentPerson-1].name);
+    $('#shoutout').html(peopleArray[currentPerson - 1].shoutout);
+    $('#current-person').html(currentPerson + " out of 23");
 
     // Add event listeners for Next and Previous Buttons
     $('.buttons').on('click', '#next', nextPerson);
     $('.buttons').on('click', '#previous', previousPerson);
 
+    // Adjust currentPerson when next button is clicked
     function nextPerson() {
-        if(currentPersonDisplayed === 23) {
-            currentPersonDisplayed = 1;
+        if(currentPerson === 23) {
+            currentPerson = 1;
         } else {
-            currentPersonDisplayed++;            
+            currentPerson++;            
         }
-        console.log('Next person', currentPersonDisplayed);
-        displayPerson();
+        displayCurrentPerson();
     }
 
+    // Adjust currentPerson when previous button is clicked
     function previousPerson() {
-        if(currentPersonDisplayed === 1) {
-            currentPersonDisplayed = 23;
+        if(currentPerson === 1) {
+            currentPerson = 23;
         } else {
-            currentPersonDisplayed--;
+            currentPerson--;
         }
-        console.log('Previous person', currentPersonDisplayed);
-        displayPerson();
+        displayCurrentPerson();
     }
 
-    function displayPerson() {
-        $('#name').html(peopleArray[currentPersonDisplayed - 1].name);
-        $('#shoutout').html(peopleArray[currentPersonDisplayed - 1].shoutout);
-        $('#current-person').html(currentPersonDisplayed + "/23");
+    // Function to display the current person when next or previous button is clicked
+    function displayCurrentPerson() {
+        $('#name').hide().html(peopleArray[currentPerson - 1].name).fadeIn('slow');
+        $('#shoutout').hide().html(peopleArray[currentPerson - 1].shoutout).fadeIn('slow');
+        $('#current-person').html(currentPerson + " out of 23");
     }
 });
