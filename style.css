@@ -12,19 +12,25 @@ body {
 }
 
 .person {
-    padding: 20px 0;
+    padding: 10px 20px;
     text-align: center;
-    height: 130px;
+    height: 200px;
+    background: #f8f8f8;
+    margin: 40px 0 20px 0;
+    border-radius: 4px;
 }
 
 #name {
     padding: 10px 0;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 #shoutout {
     clear: both;
+    font-size: 18px;
 }
 
 .buttons {
