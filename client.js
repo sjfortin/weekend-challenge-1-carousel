@@ -15,9 +15,25 @@ Complete:
 console.log('peopleArray from data.js: ', peopleArray);
 
 $(document).ready(function () {
+    
+    // Initial View on DOM load
     var currentPerson = 1;
 
-    $('#name').html(peopleArray[0].name);
-    $('#shoutout').html(peopleArray[0].shoutout);
+    $('#name').html(peopleArray[currentPerson-1].name);
+    $('#shoutout').html(peopleArray[currentPerson - 1].shoutout);
     $('#current-person').html(currentPerson + "/23");
+
+    // Add event listeners for Next and Previous Buttons
+    $('.buttons').on('click', '#next', nextPerson);
+    $('.buttons').on('click', '#previous', previousPerson);
+
+    function nextPerson() {
+        currentPerson++;
+        console.log('Next person', currentPerson);
+    }
+
+    function previousPerson() {
+        currentPerson--;
+        console.log('Previous person', currentPerson);
+    }
 });
