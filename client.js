@@ -15,13 +15,14 @@ console.log('peopleArray from data.js: ', peopleArray);
 
 $(document).ready(function () {
     // Defining global variables
-    var currentPerson = 1;
+    var currentPersonToBeDisplayed = 1;
     var secondsCounter = 0;
+    var person = peopleArray[currentPersonToBeDisplayed - 1];
 
     // Initial View on DOM load
-    $('#name').html(peopleArray[currentPerson - 1].name);
-    $('#shoutout').html(peopleArray[currentPerson - 1].shoutout);
-    $('#current-person').html('0' + currentPerson + ' out of 23');
+    $('#name').html(person.name);
+    $('#shoutout').html(person.shoutout);
+    $('#current-person').html('0' + currentPersonToBeDisplayed + ' out of 23');
 
     // Add event listeners for Next and Previous Buttons
     $('.buttons').on('click', '#next', nextPerson);
@@ -29,42 +30,43 @@ $(document).ready(function () {
 
     // Adjust currentPerson when next button is clicked
     function nextPerson() {
-        if (currentPerson === 23) {
-            currentPerson = 1;
+        if (currentPersonToBeDisplayed === peopleArray.length) {
+            currentPersonToBeDisplayed = 1;
         } else {
-            currentPerson++;
+            currentPersonToBeDisplayed++;
         }
         displayCurrentPerson();
     }
 
     // Adjust currentPerson when previous button is clicked
     function previousPerson() {
-        if (currentPerson === 1) {
-            currentPerson = 23;
+        if (currentPersonToBeDisplayed === 1) {
+            currentPersonToBeDisplayed = peopleArray.length;
         } else {
-            currentPerson--;
+            currentPersonToBeDisplayed--;
         }
         displayCurrentPerson();
     }
 
     // Function to display the current person when next or previous button is clicked
     function displayCurrentPerson() {
-        $('#name').hide().html(peopleArray[currentPerson - 1].name).fadeIn('slow');
-        $('#shoutout').hide().html(peopleArray[currentPerson - 1].shoutout).fadeIn('slow');
-        if (currentPerson < 10) {
-            $('#current-person').html('0' + currentPerson + ' out of 23');
+        person = peopleArray[currentPersonToBeDisplayed - 1];
+        $('#name').hide().html(person.name).fadeIn('slow');
+        $('#shoutout').hide().html(person.shoutout).fadeIn('slow');
+        if (currentPersonToBeDisplayed < 10) {
+            $('#current-person').html('0' + currentPersonToBeDisplayed + ' out of 23');
         } else {
-            $('#current-person').html(currentPerson + ' out of 23');
+            $('#current-person').html(currentPersonToBeDisplayed + ' out of 23');
         }
     }
 
     // Working on transition timer. Need to figure out how to reset. Maybe have a countdown display on the DOM
     function timerDisplayCurrentPerson() {
         secondsCounter = 0;
-        if (currentPerson === 23) {
-            currentPerson = 1;
+        if (currentPersonToBeDisplayed === peopleArray.length) {
+            currentPersonToBeDisplayed = 1;
         } else {
-            currentPerson++
+            currentPersonToBeDisplayed++
         }
         displayCurrentPerson();
     }
