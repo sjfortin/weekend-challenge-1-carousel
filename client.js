@@ -19,8 +19,13 @@ $(document).ready(function () {
     var person = peopleArray[currentPersonToBeDisplayed - 1];
 
     // Initial View on DOM load
-    $('#name').html(person.name);
-    $('#shoutout').html(person.shoutout);
+    $("#name").hide(function () {
+        $(this).html(person.name).fadeIn(600);
+    });
+    $("#shoutout").hide(function () {
+        $('#shoutout').html(person.shoutout).fadeIn(600);
+    });
+
     $('#current-person').html('0' + currentPersonToBeDisplayed + ' out of 23');
 
     // Add event listeners for Next and Previous Buttons
@@ -53,12 +58,12 @@ $(document).ready(function () {
     function displayCurrentPerson() {
         person = peopleArray[currentPersonToBeDisplayed - 1];
 
-        $("#name").fadeOut(function () {
-            $(this).html(person.name).fadeIn('slow');
+        $("#name").fadeOut(400, function () {
+            $(this).html(person.name).fadeIn(600);
         });
 
-        $("#shoutout").fadeOut(function () {
-            $(this).html(person.shoutout).fadeIn('slow');
+        $("#shoutout").fadeOut(400,function () {
+            $(this).html(person.shoutout).fadeIn(600);
         });
 
         if (currentPersonToBeDisplayed < 10) {
@@ -80,7 +85,7 @@ $(document).ready(function () {
     // }
 
     // var carouselTimer = function () {
-    //     setInterval(timerDisplayCurrentPerson, 10000);
+    //     setInterval(timerDisplayCurrentPerson, 4000);
     // }
 
     // carouselTimer();
