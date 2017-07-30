@@ -16,7 +16,6 @@ console.log('peopleArray from data.js: ', peopleArray);
 $(document).ready(function () {
     // Defining global variables
     var currentPersonToBeDisplayed = 1;
-    var secondsCounter = 0;
     var person = peopleArray[currentPersonToBeDisplayed - 1];
 
     // Initial View on DOM load
@@ -63,19 +62,19 @@ $(document).ready(function () {
     }
 
     // Working on transition timer. Need to figure out how to reset. Maybe have a countdown display on the DOM
-    function timerDisplayCurrentPerson() {
-        secondsCounter = 0;
-        if (currentPersonToBeDisplayed === peopleArray.length) {
-            currentPersonToBeDisplayed = 1;
-        } else {
-            currentPersonToBeDisplayed++
-        }
-        displayCurrentPerson();
-    }
+    // function timerDisplayCurrentPerson() {
+    //     if (currentPersonToBeDisplayed === peopleArray.length) {
+    //         currentPersonToBeDisplayed = 1;
+    //     } else {
+    //         currentPersonToBeDisplayed++
+    //     }
+    //     displayCurrentPerson();
+    //     carouselTimer();
+    // }
 
-    var carouselTimer = function () {
-        setTimeout(timerDisplayCurrentPerson, 5000);
-    }
+    // var carouselTimer = function () {
+    //     setInterval(timerDisplayCurrentPerson, 10000);
+    // }
 
-    carouselTimer();
+    // carouselTimer();
 });
