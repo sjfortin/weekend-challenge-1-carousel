@@ -6,24 +6,35 @@ body {
     line-height: 1.5;
 }
 
+.banner {
+    background: #333;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.banner h1 {
+    color: #fff;
+}
+
 .carousel {
     width: 80%;
     margin: 0 auto;
 }
 
 #person {
-    padding: 10px 20px;
+    padding: 10px 60px;
     text-align: center;
-    min-height: 140px;
-    background: #f8f8f8;
-    margin: 40px 0 20px 0;
+    min-height: 200px;
+    background: #f3f3f3;
+    margin: 40px 0;
     border-radius: 4px;
 }
 
 #name {
     padding: 10px 0;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 26px;
+    color: #333;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
