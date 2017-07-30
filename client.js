@@ -1,6 +1,6 @@
 /*
 To Dos:
-- Combine next and previous button event handlers into one event listener?
+- Combine next and previous button event handlers into one event listener? ==> nextPerson and previousPerson combine into one function? Need to implement DRY here.
 
 Complete:
 - Include 'Prev' and 'Next' buttons
@@ -20,12 +20,18 @@ $(document).ready(function () {
     var person = peopleArray[currentPersonToBeDisplayed - 1];
 
     // Initial View on DOM load
-    $("#name").hide(function () {
-        $(this).html(person.name).fadeIn(200);
+    // $("#name").hide(function () {
+    //     $(this).html(person.name).fadeIn(200);
+    // });
+    // $("#shoutout").hide(function () {
+    //     $(this).html(person.shoutout).fadeIn(200);
+    // });
+
+    $("#name, #shoutout").hide(function () {
+        $('#name').html(person.name).fadeIn(200);
+        $('#shoutout').html(person.shoutout).fadeIn(200);
     });
-    $("#shoutout").hide(function () {
-        $(this).html(person.shoutout).fadeIn(200);
-    });
+
     $('#current-person').html('0' + currentPersonToBeDisplayed + ' out of 23');
 
     // Add event listeners for Next and Previous Buttons
@@ -68,12 +74,17 @@ $(document).ready(function () {
     function displayCurrentPerson() {
         person = peopleArray[currentPersonToBeDisplayed - 1];
 
-        $("#name").fadeOut(200, function () {
-            $(this).html(person.name).fadeIn(400);
-        });
+        // $("#name").fadeOut(200, function () {
+        //     $(this).html(person.name).fadeIn(400);
+        // });
 
-        $("#shoutout").fadeOut(200, function () {
-            $(this).html(person.shoutout).fadeIn(400);
+        // $("#shoutout").fadeOut(200, function () {
+        //     $(this).html(person.shoutout).fadeIn(400);
+        // });
+
+        $("#name, #shoutout").fadeOut(200, function () {
+            $('#name').html(person.name).fadeIn(400);
+            $('#shoutout').html(person.shoutout).fadeIn(400);
         });
 
         if (currentPersonToBeDisplayed < 10) {
