@@ -1,6 +1,6 @@
 /*
 To Dos:
-- Include a timer that moves to the next person if the user is not clicking on 'Next' or 'Prev'. If the user clicks on 'Next' or 'Prev', the timer should be reset. The timer should transition between people every 10 seconds.
+- Combine next and previous button event handlers into one event listener?
 
 Complete:
 - Include 'Prev' and 'Next' buttons
@@ -9,6 +9,7 @@ Complete:
 - DOM should display showing the number of people and which is being currently viewed (eg. 2/20).
 - When a person is displayed, show their first name, last name and their shout out. Only one person should be shown at any given time.
 - Include a fade out and fade in animation in-between transitioning people.
+- Include a timer that moves to the next person if the user is not clicking on 'Next' or 'Prev'. If the user clicks on 'Next' or 'Prev', the timer should be reset. The timer should transition between people every 10 seconds.
 */
 
 console.log('peopleArray from data.js: ', peopleArray);
@@ -39,8 +40,11 @@ $(document).ready(function () {
         } else {
             currentPersonToBeDisplayed++;
         }
+
+        // Reset timer and start it again
         clearInterval(carouselTimer);
         startCarouselTimer();
+
         displayCurrentPerson();
     }
 
@@ -52,8 +56,11 @@ $(document).ready(function () {
         } else {
             currentPersonToBeDisplayed--;
         }
+        
+        // Reset timer and start it again
         clearInterval(carouselTimer);
         startCarouselTimer();
+        
         displayCurrentPerson();
     }
 
@@ -76,16 +83,7 @@ $(document).ready(function () {
         }
     }
 
-    // Working on transition timer. Need to figure out how to reset. Maybe have a countdown display on the DOM
-    function timerDisplayCurrentPerson() {
-        if (currentPersonToBeDisplayed === peopleArray.length) {
-            currentPersonToBeDisplayed = 1;
-        } else {
-            currentPersonToBeDisplayed++
-        }      
-        displayCurrentPerson();
-    }
-
+    // Timer setup for the auto transition between names and shoutouts
     var carouselTimer;
 
     function startCarouselTimer() {
@@ -94,4 +92,13 @@ $(document).ready(function () {
         }, 10000);
     }
     startCarouselTimer();
+
+    function timerDisplayCurrentPerson() {
+        if (currentPersonToBeDisplayed === peopleArray.length) {
+            currentPersonToBeDisplayed = 1;
+        } else {
+            currentPersonToBeDisplayed++
+        }
+        displayCurrentPerson();
+    }
 });
