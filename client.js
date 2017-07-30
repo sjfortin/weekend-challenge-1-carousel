@@ -52,8 +52,15 @@ $(document).ready(function () {
     // Displays the current person when next or previous button is clicked
     function displayCurrentPerson() {
         person = peopleArray[currentPersonToBeDisplayed - 1];
-        $('#name').hide().html(person.name).fadeIn('slow');
-        $('#shoutout').hide().html(person.shoutout).fadeIn('slow');
+
+        $("#name").fadeOut(function () {
+            $(this).html(person.name).fadeIn('slow');
+        });
+
+        $("#shoutout").fadeOut(function () {
+            $(this).html(person.shoutout).fadeIn('slow');
+        });
+
         if (currentPersonToBeDisplayed < 10) {
             $('#current-person').html('0' + currentPersonToBeDisplayed + ' out of 23');
         } else {

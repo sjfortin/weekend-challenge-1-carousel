@@ -11,7 +11,7 @@ body {
     margin: 0 auto;
 }
 
-.person {
+#person {
     padding: 10px 20px;
     text-align: center;
     min-height: 140px;
