@@ -20,12 +20,11 @@ $(document).ready(function () {
 
     // Initial View on DOM load
     $("#name").hide(function () {
-        $(this).html(person.name).fadeIn(600);
+        $(this).html(person.name).fadeIn(200);
     });
     $("#shoutout").hide(function () {
-        $('#shoutout').html(person.shoutout).fadeIn(600);
+        $(this).html(person.shoutout).fadeIn(200);
     });
-
     $('#current-person').html('0' + currentPersonToBeDisplayed + ' out of 23');
 
     // Add event listeners for Next and Previous Buttons
@@ -40,6 +39,8 @@ $(document).ready(function () {
         } else {
             currentPersonToBeDisplayed++;
         }
+        clearInterval(carouselTimer);
+        startCarouselTimer();
         displayCurrentPerson();
     }
 
@@ -51,6 +52,8 @@ $(document).ready(function () {
         } else {
             currentPersonToBeDisplayed--;
         }
+        clearInterval(carouselTimer);
+        startCarouselTimer();
         displayCurrentPerson();
     }
 
@@ -58,12 +61,12 @@ $(document).ready(function () {
     function displayCurrentPerson() {
         person = peopleArray[currentPersonToBeDisplayed - 1];
 
-        $("#name").fadeOut(400, function () {
-            $(this).html(person.name).fadeIn(600);
+        $("#name").fadeOut(200, function () {
+            $(this).html(person.name).fadeIn(400);
         });
 
-        $("#shoutout").fadeOut(400,function () {
-            $(this).html(person.shoutout).fadeIn(600);
+        $("#shoutout").fadeOut(200, function () {
+            $(this).html(person.shoutout).fadeIn(400);
         });
 
         if (currentPersonToBeDisplayed < 10) {
@@ -74,19 +77,21 @@ $(document).ready(function () {
     }
 
     // Working on transition timer. Need to figure out how to reset. Maybe have a countdown display on the DOM
-    // function timerDisplayCurrentPerson() {
-    //     if (currentPersonToBeDisplayed === peopleArray.length) {
-    //         currentPersonToBeDisplayed = 1;
-    //     } else {
-    //         currentPersonToBeDisplayed++
-    //     }
-    //     displayCurrentPerson();
-    //     carouselTimer();
-    // }
+    function timerDisplayCurrentPerson() {
+        if (currentPersonToBeDisplayed === peopleArray.length) {
+            currentPersonToBeDisplayed = 1;
+        } else {
+            currentPersonToBeDisplayed++
+        }      
+        displayCurrentPerson();
+    }
 
-    // var carouselTimer = function () {
-    //     setInterval(timerDisplayCurrentPerson, 4000);
-    // }
+    var carouselTimer;
 
-    // carouselTimer();
+    function startCarouselTimer() {
+        carouselTimer = setInterval(function () {
+            timerDisplayCurrentPerson();
+        }, 10000);
+    }
+    startCarouselTimer();
 });
