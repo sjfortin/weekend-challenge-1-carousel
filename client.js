@@ -16,23 +16,16 @@ console.log('peopleArray from data.js: ', peopleArray);
 
 $(document).ready(function () {
     // Defining global variables
-    var currentPersonToBeDisplayed = 1;
-    var person = peopleArray[currentPersonToBeDisplayed - 1];
+    var personCurrentlyBeingViewed = 1;
+    var person = peopleArray[personCurrentlyBeingViewed - 1];
+    var totalNumberOfPeople = peopleArray.length;
 
     // Initial View on DOM load
-    // $("#name").hide(function () {
-    //     $(this).html(person.name).fadeIn(200);
-    // });
-    // $("#shoutout").hide(function () {
-    //     $(this).html(person.shoutout).fadeIn(200);
-    // });
-
     $("#name, #shoutout").hide(function () {
         $('#name').html(person.name).fadeIn(200);
         $('#shoutout').html(person.shoutout).fadeIn(200);
     });
-
-    $('#current-person').html('0' + currentPersonToBeDisplayed + ' out of 23');
+    $('#current-person').html('0' + personCurrentlyBeingViewed + ' out of ' + totalNumberOfPeople);
 
     // Add event listeners for Next and Previous Buttons
     $('#next').on('click', nextPerson);
@@ -41,10 +34,10 @@ $(document).ready(function () {
     // Set the person to be displayed as the next person when next button is clicked
     function nextPerson() {
         // If current person is the last person, set the person to be displayed to the first person
-        if (currentPersonToBeDisplayed === peopleArray.length) {
-            currentPersonToBeDisplayed = 1;
+        if (personCurrentlyBeingViewed === totalNumberOfPeople) {
+            personCurrentlyBeingViewed = 1;
         } else {
-            currentPersonToBeDisplayed++;
+            personCurrentlyBeingViewed++;
         }
 
         // Reset timer and start it again
@@ -57,10 +50,10 @@ $(document).ready(function () {
     // Set the person to be displayed as the previous person when previous button is clicked
     function previousPerson() {
         // If the current person is the first person, set the person to be displayed to the last person
-        if (currentPersonToBeDisplayed === 1) {
-            currentPersonToBeDisplayed = peopleArray.length;
+        if (personCurrentlyBeingViewed === 1) {
+            personCurrentlyBeingViewed = totalNumberOfPeople;
         } else {
-            currentPersonToBeDisplayed--;
+            personCurrentlyBeingViewed--;
         }
         
         // Reset timer and start it again
@@ -72,25 +65,17 @@ $(document).ready(function () {
 
     // Displays the current person when next or previous button is clicked
     function displayCurrentPerson() {
-        person = peopleArray[currentPersonToBeDisplayed - 1];
-
-        // $("#name").fadeOut(200, function () {
-        //     $(this).html(person.name).fadeIn(400);
-        // });
-
-        // $("#shoutout").fadeOut(200, function () {
-        //     $(this).html(person.shoutout).fadeIn(400);
-        // });
+        person = peopleArray[personCurrentlyBeingViewed - 1];
 
         $("#name, #shoutout").fadeOut(200, function () {
             $('#name').html(person.name).fadeIn(400);
             $('#shoutout').html(person.shoutout).fadeIn(400);
         });
 
-        if (currentPersonToBeDisplayed < 10) {
-            $('#current-person').html('0' + currentPersonToBeDisplayed + ' out of 23');
+        if (personCurrentlyBeingViewed < 10) {
+            $('#current-person').html('0' + personCurrentlyBeingViewed + ' out of ' + totalNumberOfPeople);
         } else {
-            $('#current-person').html(currentPersonToBeDisplayed + ' out of 23');
+            $('#current-person').html(personCurrentlyBeingViewed + ' out of ' + totalNumberOfPeople);
         }
     }
 
@@ -105,11 +90,12 @@ $(document).ready(function () {
     startCarouselTimer();
 
     function timerDisplayCurrentPerson() {
-        if (currentPersonToBeDisplayed === peopleArray.length) {
-            currentPersonToBeDisplayed = 1;
+        if (personCurrentlyBeingViewed === totalNumberOfPeople) {
+            personCurrentlyBeingViewed = 1;
         } else {
-            currentPersonToBeDisplayed++
+            personCurrentlyBeingViewed++
         }
+
         displayCurrentPerson();
     }
 });
