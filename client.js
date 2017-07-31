@@ -28,38 +28,28 @@ $(document).ready(function () {
     $('#current-person').html('0' + personCurrentlyBeingViewed + ' out of ' + totalNumberOfPeople);
 
     // Add event listeners for Next and Previous Buttons
-    $('#next').on('click', nextPerson);
-    $('#previous').on('click', previousPerson);
+    $('#next').on('click', changePerson);
+    $('#previous').on('click', changePerson);
 
-    // Set the person to be displayed as the next person when next button is clicked
-    function nextPerson() {
-        // If current person is the last person, set the person to be displayed to the first person
-        if (personCurrentlyBeingViewed === totalNumberOfPeople) {
-            personCurrentlyBeingViewed = 1;
-        } else {
-            personCurrentlyBeingViewed++;
+    function changePerson() {
+        if ($(this)[0].id === 'previous') {
+            if (personCurrentlyBeingViewed === 1) {
+                personCurrentlyBeingViewed = totalNumberOfPeople;
+            } else {
+                personCurrentlyBeingViewed--;
+            }
+        } else if ($(this)[0].id === 'next') {
+            if (personCurrentlyBeingViewed === totalNumberOfPeople) {
+                personCurrentlyBeingViewed = 1;
+            } else {
+                personCurrentlyBeingViewed++;
+            }
         }
 
         // Reset timer and start it again
         clearInterval(carouselTimer);
         startCarouselTimer();
 
-        displayCurrentPerson();
-    }
-
-    // Set the person to be displayed as the previous person when previous button is clicked
-    function previousPerson() {
-        // If the current person is the first person, set the person to be displayed to the last person
-        if (personCurrentlyBeingViewed === 1) {
-            personCurrentlyBeingViewed = totalNumberOfPeople;
-        } else {
-            personCurrentlyBeingViewed--;
-        }
-        
-        // Reset timer and start it again
-        clearInterval(carouselTimer);
-        startCarouselTimer();
-        
         displayCurrentPerson();
     }
 
@@ -97,5 +87,17 @@ $(document).ready(function () {
         }
 
         displayCurrentPerson();
+    }
+
+    // Starting to add start and stop functionality
+    $('#start').on('click', startTimer);
+    $('#stop').on('click', stopTimer);
+
+    function stopTimer() {
+        clearInterval(carouselTimer);
+    }
+
+    function startTimer() {
+        startCarouselTimer();
     }
 });
