@@ -20,12 +20,8 @@ $(document).ready(function () {
     var person = peopleArray[personCurrentlyBeingViewed - 1];
     var totalNumberOfPeople = peopleArray.length;
 
-    // Initial View on DOM load
-    $("#name, #shoutout").hide(function () {
-        $('#name').html(person.name).fadeIn(200);
-        $('#shoutout').html(person.shoutout).fadeIn(200);
-    });
-    $('#current-person').html('0' + personCurrentlyBeingViewed + ' out of ' + totalNumberOfPeople);
+    // Start application and set view on DOM load
+    displayCurrentPerson();
 
     // Add event listeners for Next and Previous Buttons
     $('#next').on('click', changePerson);
