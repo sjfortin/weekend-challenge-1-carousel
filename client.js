@@ -10,6 +10,7 @@ $(document).ready(function () {
 
     // Start application and set view on DOM load
     displayCurrentPerson();
+    startCarouselTimer();
 
     // Event handlers
     $('#next').on('click', changePerson);
@@ -64,7 +65,6 @@ function startCarouselTimer() {
         timerDisplayCurrentPerson();
     }, 10000);
 }
-startCarouselTimer();
 
 // Timer function to display current person
 function timerDisplayCurrentPerson() {
